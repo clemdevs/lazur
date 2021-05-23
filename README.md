@@ -23,4 +23,4 @@ Important files:
 
 
 Todo:
-*Add Update and Delete methods for both multiple records and one record.
+* Add Update and Delete methods for both multiple records and one record.
