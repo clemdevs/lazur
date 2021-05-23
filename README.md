@@ -20,3 +20,7 @@ We will also have crud operations to update and delete data which will also affe
 Important files:
 * config.php - establish database connection
 * create.php - create tables
+
+
+Todo:
+*Add Update and Delete methods for both multiple records and one record.
