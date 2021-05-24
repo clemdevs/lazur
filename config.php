@@ -1,18 +1,21 @@
 <?php
-$host = 'localhost'; 
-$dbUser = 'root'; 
-$dbPass = ""; 
-$dbName = 'lazur'; 
- 
-if(!$dbConn = mysqli_connect($host, $dbUser, $dbPass)) {
-    die('Не може да се осъществи връзка със сървъра.');
-}
-echo "Връзката е успешна. <br>";
 
-if (!mysqli_select_db($dbConn, $dbName)){
-    die('Не може да се селектира базата от данни.');
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "lazur";
+
+// Create connection
+$dbConn = new mysqli($servername, $username, $password, $dbname);
+
+// Check if successful connection
+if (!$dbConn) {
+  die("Connection failed: " . $conn->connect_error . "\n"
+                            . $conn->connect_errno . "\n");
+} else {
+   return; //successful connection
 }
 
-echo "Базата данни е селектирана. <br>";
 
 ?>
+

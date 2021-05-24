@@ -1,19 +1,6 @@
-<?php
+<?php 
+
 require_once "config.php";
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "lazur";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check if successful connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error . "\n"
-                            . $conn->connect_errno . "\n");
-}
 
 $errors = [];
 
@@ -49,12 +36,12 @@ $tables = [$table1, $table2];
 
 
 foreach($tables as $c => $sql){
-  $query = $conn->query($sql);
+  $query = $dbConn->query($sql);
 
 
 
   if(!$query)
-     $errors[] = "Table $c : Creation failed ($conn->error)";
+     $errors[] = "Table $c : Creation failed ($dbConn->error)";
 
   else
      $errors[] = "Table $c : Creation done\n";
@@ -65,8 +52,10 @@ foreach($errors as $msg) {
  echo "$msg <br>";
 }
 
-$conn->close();
+$dbConn->close();
 
+
+//example data
 
 /*
 * Абоба 00006587412 2 0881111111 1995 Ева Илиева
@@ -76,6 +65,3 @@ $conn->close();
 * Маг 045891245 4 094611111 1996 Иво Николов
 * Орхидея 005417863 4 0885666666 2010 Митко Тодоров
 */
-
-?>
-

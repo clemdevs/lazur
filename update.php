@@ -8,7 +8,7 @@
     echo "Доставчик, лице за контакти";
     foreach ($providers as $prov):
 ?>
-    <ol><?php echo "{$prov->id}.  {$prov->deliver}, {$prov->person}";?></ol>
+    <ol><?php echo "$prov->id.  $prov->deliver, $prov->person";?></ol>
 
 <?php endforeach; 
       else:
