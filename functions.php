@@ -126,7 +126,7 @@ function setCityProvider(mysqli $dbConn, $id1, $id2){
 
         $result = $stmt->affected_rows;
 
-        if($result){
+        if(!$result){
             printf("Обновени записи: %d", $result); 
         } else {
             die(throw new \mysqli_sql_exception("Грешка при обновяване на данни:\n". $dbConn->error . "\n" 
@@ -140,12 +140,13 @@ function setCityProvider(mysqli $dbConn, $id1, $id2){
 }
 
 
-function getOneProvider(mysqli $dbConn){
+function getOneProviderUpdate(mysqli $dbConn){
     try{ 
         $response = [];
-        $sql = "SELECT * FROM `provider` WHERE `deliver` = ? LIMIT 1";
+        $sql = "SELECT * FROM `provider` WHERE `deliver` = ?";
         $stmt = $dbConn->prepare($sql);
         $pn = "Лазур";
+
         $stmt->bind_param('s', $pn);
 
         $stmt->execute();
@@ -158,7 +159,40 @@ function getOneProvider(mysqli $dbConn){
         };   
                 
         $stmt->close();
-        $response;
+        return $response;
+    }catch(\mysqli_sql_exception $e){
+        $dbConn->close();
+        die(throw new \mysqli_sql_exception($e->getMessage(), $e->getCode()));
+    }
+}
+
+
+function getOneProviderDelete(mysqli $dbConn){
+    try{ 
+        $response = [];
+        $sql = "SELECT * FROM `provider` WHERE `deliver` = ?";
+        $stmt = $dbConn->prepare($sql);
+        $d = "Орхидея";
+        $stmt->bind_param('s', $d);
+
+        $stmt->execute();
+
+        $result = $stmt->get_result(); 
+        
+        while($response = $result->fetch_assoc()){
+            $link = "delete1-action.php";
+            printf('<table><tr><th>Доставчик</th><th>Булстат</th></tr><tr><td>%s</td><td>%s</td></tr><tfoot><tr><td colspan="2"><a href="%s">Изтриване</td></tr></tfoot></table>', $response['deliver'], $response['bulsat'], $link);
+        }; 
+
+        $stmt->close();
+
+        if($response){
+            return $response;
+            exit;
+        } else {
+            echo "Няма намерени записи";
+        }
+
     }catch(\mysqli_sql_exception $e){
         $dbConn->close();
         die(throw new \mysqli_sql_exception($e->getMessage(), $e->getCode()));
@@ -188,11 +222,10 @@ function updateOneProvider(mysqli $dbConn){
         $p_o = "Мария Руменова";
         $b_o = "00000856231";
 
-        /**end new */
         $stmt->bind_param('ssssss', $b_u, $p_u, $d_u, $b_o, $p_o, $d_o);
         
         $stmt->execute();
-        $result = $stmt->get_result();
+        $result = $stmt->affected_rows;
         if(!$result){
             echo '<div class="msg-success">Записът е обновен успешно.
             <div class="msg-body">Redirecting...</div></div>';
@@ -200,13 +233,41 @@ function updateOneProvider(mysqli $dbConn){
             header("Location: update1.php", true, 303);
             exit;
         } else {
-            sleep(5);
-            header("Location: update1.php");
+            sleep(10);
             die(throw new \mysqli_sql_exception("Грешка при обновяване на данни:\n". $dbConn->error . "\n" 
                                                                                    . $dbConn->errno . "\n"));
+            header("Location: update1.php", true, 303);
+
         }
         
         $stmt->close();
+    }catch(\mysqli_sql_exception $e){
+        $dbConn->close();
+        die(throw new \mysqli_sql_exception($e->getMessage(), $e->getCode()));
+    }
+}
+
+
+function deleteOneProvider(mysqli $dbConn){
+    try{
+        $sql = "DELETE FROM `provider` WHERE `bulsat` = ? AND `deliver` = ?";
+        $stmt = $dbConn->prepare($sql);
+        $d = "Орхидея";
+        $b = "005417863";
+        $stmt->bind_param('ss', $b, $d);
+        $stmt->execute();
+        $result = $stmt->affected_rows;
+
+        if($result){
+            printf("Изтрити записи: %d", $result); 
+            sleep(5);
+            header("Location: delete1.php", true, 303);
+        } else {
+            die(throw new \mysqli_sql_exception("Грешка при изтриване на данни:\n" . $dbConn->error . "\n" 
+                                                                                   . $dbConn->errno . "\n"));
+        }
+        $stmt->close();
+
     }catch(\mysqli_sql_exception $e){
         $dbConn->close();
         die(throw new \mysqli_sql_exception($e->getMessage(), $e->getCode()));
