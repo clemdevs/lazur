@@ -28,8 +28,8 @@ Important files:
 * create.php - create/manage tables data
 
 Crud files:
-* update1.php - Displays provider's phone, deliver, and name only. Updates 1 provider via script
-* delete1.php - Displays provider's bulsat only. Deletes 1 provider via script 
+* update1.php - Displays provider's phone, deliver, and name only. Updates 1 provider name, phone, or bulstat via mysqli query.
+* delete1.php - Displays provider's bulsat only. Deletes 1 provider via mysqli query. 
 
 Todo:
 * Add Update and Delete methods for both multiple records and one record.
