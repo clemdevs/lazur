@@ -4,8 +4,8 @@ A sample project with procedural php. Nothing too fancy, this is just a demo of 
 
 How to run:
 
-You will need apache and mysql services running.
-Edit database variables inside `config.php` based on your mysql credentials to establish a connection, and make sure to have the database lazur created.
+You will need apache and mysql services running.  
+Edit database variables inside `config.php` based on your mysql credentials to establish a connection, and make sure to have the database lazur created.  
 Then go to create.php which will create the tables for the database.
 
 Project overview:
@@ -28,8 +28,9 @@ Important files:
 * create.php - create/manage tables data
 
 Crud files:
-* update1.php - Displays provider's phone, deliver, and name only. Updates 1 provider name, phone, or bulstat via mysqli query.
+* delete.php - Delete All Providers
+* update1.php - Displays provider's phone, deliver, and name only. When the user hits Edit it should update 1 provider name, phone, or bulstat via mysqli query.
 * delete1.php - Displays provider's bulsat only. Deletes 1 provider via mysqli query. 
 
 Todo:
-* Add Update and Delete methods for both multiple records and one record.
+* Add Delete method for both multiple records and one record.
