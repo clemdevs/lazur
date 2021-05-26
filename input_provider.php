@@ -72,7 +72,7 @@ require_once "functions.php";
         <th>Година на регистрация</th>
         <th>Лице за контакти</th>
         </tr>
-
+        
         <?php 
             $getProvider = getProviders($dbConn);
             
