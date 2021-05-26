@@ -19,8 +19,11 @@ We will also have crud operations to update and delete data which will also affe
 
 Important files:
 * config.php - establish database connection
-* create.php - create tables
+* create.php - create/manage tables data
 
+Crud files:
+* update1.php - Displays provider's phone, deliver, and name only. Updates 1 provider via script
+* delete1.php - Displays provider's bulsat only. Deletes 1 provider via script 
 
 Todo:
 * Add Update and Delete methods for both multiple records and one record.
