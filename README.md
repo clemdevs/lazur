@@ -4,8 +4,8 @@ A sample project with procedural php. Nothing too fancy, this is just a demo of 
 
 How to run:
 
-You will need apache and mysql services running. 
-Edit database variables inside `config.php` based on your mysql credentials to establish a connection, and make sure to have the database lazur created. 
+You will need apache and mysql services running. &nbsp;
+Edit database variables inside `config.php` based on your mysql credentials to establish a connection, and make sure to have the database lazur created. &nbsp;
 Then go to create.php which will create the tables for the database.
 
 Project overview:
