@@ -2,6 +2,12 @@
 A sample project with procedural php. Nothing too fancy, this is just a demo of using prepared statements to display results from database.
 
 
+How to run:
+
+You will need apache and mysql services running.
+Edit database variables inside `config.php` based on your mysql credentials to establish a connection, and make sure to have the database lazur created.
+Then go to create.php which will create the tables for the database.
+
 Project overview:
 For delivers of a company is needed: 
 
@@ -19,8 +25,11 @@ We will also have crud operations to update and delete data which will also affe
 
 Important files:
 * config.php - establish database connection
-* create.php - create tables
+* create.php - create/manage tables data
 
+Crud files:
+* update1.php - Displays provider's phone, deliver, and name only. Updates 1 provider name, phone, or bulstat via mysqli query.
+* delete1.php - Displays provider's bulsat only. Deletes 1 provider via mysqli query. 
 
 Todo:
 * Add Update and Delete methods for both multiple records and one record.
