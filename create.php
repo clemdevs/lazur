@@ -12,7 +12,7 @@ $table1 = "CREATE TABLE `provider` (
 `address` INT(6) UNSIGNED,
 `telephone` VARCHAR(10) NOT NULL,
 `year` YEAR NOT NULL,
-`person` VARCHAR(30) NOT NULL,
+`person` VARCHAR(30) NOT NULL UNIQUE,
 PRIMARY KEY(`id`, `address`),
 INDEX(`address`)
 )
@@ -53,7 +53,6 @@ foreach($errors as $msg) {
 }
 
 $dbConn->close();
-
 
 //example data
 

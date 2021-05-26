@@ -53,8 +53,8 @@ require_once "functions.php";
                 if(isset($_POST["addr"])){
                     if($_POST["addr"] == $cti["city"]){
                         $ids = htmlentities($dbConn->real_escape_string($cti["id"]));
-                        $provider_data = insertProvider($dbConn, $dl, $bt, $ids, $tel, $yr, $psn);
-                        updateCityProvider($dbConn, $ids, $ids);
+                        $provider_data = setProvider($dbConn, $dl, $bt, $ids, $tel, $yr, $psn);
+                        setCityProvider($dbConn, $ids, $ids);
                     }
                 }
             }
