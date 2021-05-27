@@ -26,8 +26,5 @@ Important files:
 
 Crud files:
 * /operations/delete.php - Delete All Providers
-* /operations/update1.php - Displays provider's phone, deliver, and name only. When the user hits Edit it should update 1 provider name, phone, or bulstat via mysqli query.
-* /operations/delete1.php - Displays provider's bulsat only. Deletes 1 provider via mysqli query. 
-
-Todo:
-* Add Delete method for both multiple records and one record.
+* /operations/update1.php - Displays phone, deliver, and name only for deliver "Лазур". When the user clicks edit the data for deliver "Лазур" gets updated via query.
+* /operations/delete1.php - Displays deliver's bulstat only. When user clicks delete all data for provider "Орхидея" gets deleted via query. 
