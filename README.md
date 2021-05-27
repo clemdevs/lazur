@@ -6,7 +6,7 @@ How to run:
 
 You will need apache and mysql services running.  
 Edit database variables inside `config.php` based on your mysql credentials to establish a connection, and make sure to have the database lazur created.  
-Then go to create.php which will create the tables for the database.
+Then go to create.php which will create the tables for the database/or just import lazur-bg.sql into the lazur database
 
 ## Project overview:  
 For delivers of a company is needed: 
