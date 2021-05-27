@@ -13,21 +13,18 @@ $table1 = "CREATE TABLE `provider` (
 `telephone` VARCHAR(10) NOT NULL,
 `year` YEAR NOT NULL,
 `person` VARCHAR(30) NOT NULL UNIQUE,
-PRIMARY KEY(`id`, `address`),
-INDEX(`address`)
+PRIMARY KEY(`id`),
+INDEX indx_address (`address`)
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
 
 $table2 = "CREATE TABLE `cities` (
 `id` INT(6) UNSIGNED NOT NULL AUTO_INCREMENT,
-`cityId` INT(6) UNSIGNED,
 `city` VARCHAR(30) NOT NULL,
+`cityId` INT(6) UNSIGNED,
 PRIMARY KEY(`id`),
-CONSTRAINT `fk_address_city`
-FOREIGN KEY (`cityId`) 
-REFERENCES `provider`(`address`)
-ON UPDATE CASCADE 
-ON DELETE CASCADE
+FOREIGN KEY(cityId) REFERENCES provider(address)
+    ON UPDATE CASCADE ON DELETE CASCADE
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ";

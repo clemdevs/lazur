@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Доставчици</title>
-</head>
-<body>
-    <pre>
-    <h1>Доставчици</h1>
+<?php include_once "views/partials/header.php"; ?>
 
-    <a href="input_town.php">Въвеждане на населено място</a>
-    <a href="input_provider.php">Въвеждане на доставчик</a>
-    <a href="update.php">Редактиране</a>
-    <a href="delete.php">Изтриване</a>
-    
-    </pre>
+    <h1>Providers</h1>
+    <ul>
+        <li><a href="input/input_town.php">Add address</a></li>
+        <li><a href="input/input_provider.php">Add provider</a></li>
+        <li><a href="operations/update.php">Update</a></li>
+        <li><a href="operations/delete.php">Delete</a></li>
+    </ul>
+
+    </div>
 </body>
 </html>

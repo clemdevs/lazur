@@ -1,0 +1,125 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --primary-clr: rgb(248, 248, 248);
+    --info-clr: rgb(83, 151, 206);
+    --danger-bg: rgb(202, 19, 19);
+    --warning-clr: rgb(243, 213, 130);
+    --success-clr: rgb(25, 172, 25);
+    --success-bg: rgb(25, 172, 25);
+}
+
+body{
+    background: #f5f6f6;
+	font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif; 
+    line-height: 1.6;
+}
+
+.container{
+    max-width: 70rem;
+    width: 100%;
+    padding: 0 0.2em;
+    margin: 0 auto;
+}
+
+input{
+    margin: 0.5em 0;
+}
+
+table{
+    width: 50%;
+}
+
+table, th, td{
+    text-align: center;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+form > *{
+    margin: 0.5em auto;
+}
+
+form, input{
+    display: inline-block;
+}
+
+label{
+    display: block;
+}
+
+form{
+    width: 100%;
+    text-align: center;
+}
+
+input, button{
+    border: 0;
+    outline: 0;
+}
+
+input[type="text"]{
+    border-bottom: 1px solid black;
+    line-height: 2;
+    font-size: 1.4rem;
+    padding: 0 0.5em;
+}
+
+input[type="Submit"]{
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0.5em;
+    color: var(--primary-clr);
+    background: var(--success-bg);
+    border-radius: 0.1em;
+}
+
+select{
+    font-size: 1.2rem;
+}
+
+
+ul li{
+    list-style: none;
+}
+
+ul li a{
+    color: var(--info-clr);
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+ul li a:hover{
+    color: var(--warning-clr);
+    text-shadow: 0.5 0.5em var(--warning-clr);
+}
+
+div.success-msg, div.error-msg{
+    width: 50%;
+    text-align: center;
+    color: var(--primary-clr);
+    padding: 0.3em;
+    margin: 1em auto;
+}
+
+.success-msg{
+    background: var(--success-bg);
+}
+
+.error-msg{
+    background: var(--danger-bg);
+}
+
+.msg-title{
+    padding: 0.2em 0 0.5em 0;
+    border-bottom: 1px solid var(--primary-clr);
+}
+.msg-body{
+    padding: 1em 0 0.8em 0;
+}

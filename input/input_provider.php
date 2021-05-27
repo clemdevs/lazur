@@ -1,26 +1,14 @@
 <?php
-require_once "config.php";
-require_once "functions.php";
-
+require_once "../data/config.php";
+require_once "../base/functions.php";
+require_once "../views/partials/header.php";
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Provider</title>
-</head>
-<body>
     <form action="input_provider.php" method="post">
-    <pre>
-    Фирма: <input type="text" name="dlvr">
-    Булстат: <input type="text" name="blst">
-    Населено място: 
+    <div class="form-input">Deliver: <input type="text" name="dlvr"></div>
+    <div class="form-input">Bulstat: <input type="text" name="blst"></div>
+    <div class="form-input">Address: 
     <select name="addr">
-    <option disabled selected>---ИЗБЕРИ---</option>
+    <option disabled selected>---Choose---</option>
     <?php
         $dropdown_res = getCities($dbConn);
         foreach($dropdown_res as $option){
@@ -28,12 +16,12 @@ require_once "functions.php";
         }
     ?>
     </select>
+    </div>
 
-    Телефон: <input type="text" name="phone">
-    Година на регистрация: <input type="text" name="yr">
-    Лице за контакти: <input type="text" name="person">
-    <input type="submit" name="submit" value="Добави" />
-    </pre>
+    <div class="form-input">Telephone: <input type="text" name="phone"></div>
+    <div class="form-input">Year of registry: <input type="text" name="yr"></div>
+    <div class="form-input">Person: <input type="text" name="person">
+    <input type="submit" name="submit" value="Add" /></div>
     </form>
 
     <?php if(isset($_POST["submit"]))
@@ -52,7 +40,7 @@ require_once "functions.php";
         foreach($citiesInfo as $cti){
                 if(isset($_POST["addr"])){
                     if($_POST["addr"] == $cti["city"]){
-                        $ids = htmlentities($dbConn->real_escape_string($cti["id"]));
+                        $ids = htmlentities($dbConn->real_escape_string($cti["id"])); //get selected Id
                         $provider_data = setProvider($dbConn, $dl, $bt, $ids, $tel, $yr, $psn);
                         setCityProvider($dbConn, $ids, $ids);
                     }
@@ -65,18 +53,18 @@ require_once "functions.php";
 
     <table cellspacing="6">
     <tr>
-        <th>Доставчик</th>
-        <th>Булстат</th>
-        <th>Адрес</th>
-        <th>Телефон</th>
-        <th>Година на регистрация</th>
-        <th>Лице за контакти</th>
+        <th>Deliver</th>
+        <th>Bulstat</th>
+        <th>Address</th>
+        <th>Telephone</th>
+        <th>Year of registry</th>
+        <th>Person</th>
         </tr>
         
         <?php 
             $getProvider = getProviders($dbConn);
             
-            if(count($getProvider) > 0):
+            if($getProvider !== null && count($getProvider) > 0):
 
             foreach ($getProvider as $provider):
 
@@ -93,9 +81,11 @@ require_once "functions.php";
                 else:
             ?>
             <tr>
-            <td colspan="6">Няма въведени записи</td>
+            <td colspan="6">No records found</td>
             </tr>
         <?php endif; ?>
     </table>
+
+    </div>
 </body>
 </html>
