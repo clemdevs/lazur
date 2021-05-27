@@ -8,7 +8,7 @@ You will need apache and mysql services running.
 Edit database variables inside `config.php` based on your mysql credentials to establish a connection, and make sure to have the database lazur created.  
 Then go to create.php which will create the tables for the database.
 
-##Project overview:  
+## Project overview:  
 For delivers of a company is needed: 
 
 Company, Deliver, Bulstat, Address (which is only a town), Phone number, Year of registry, Person's name.
