@@ -115,7 +115,7 @@ ALTER TABLE `provider`
 -- Constraints for table `cities`
 --
 ALTER TABLE `cities`
-  ADD CONSTRAINT `cities_ibfk_1` FOREIGN KEY (`cityId`) REFERENCES `provider` (`address`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `cities_ibfk_1` FOREIGN KEY (`cityId`) REFERENCES `provider` (`address`) ON UPDATE CASCADE ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,7 +1,7 @@
 <?php
     require_once "../data/config.php";
     require_once "../base/functions.php";
-    include_once "../views/partials/header.php";
+    require_once "../views/partials/header.php";
 
     $providers = getProviders($dbConn);
 

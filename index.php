@@ -1,4 +1,4 @@
-<?php include_once "views/partials/header.php"; ?>
+<?php require_once "views/partials/header.php"; ?>
 
     <h1>Providers</h1>
     <ul>

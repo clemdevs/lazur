@@ -40,7 +40,7 @@ require_once "../views/partials/header.php";
         foreach($citiesInfo as $cti){
                 if(isset($_POST["addr"])){
                     if($_POST["addr"] == $cti["city"]){
-                        $ids = htmlentities($dbConn->real_escape_string($cti["id"])); //get selected Id
+                        $ids = filter_var($cti["id"], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE); //get selected Id
                         $provider_data = setProvider($dbConn, $dl, $bt, $ids, $tel, $yr, $psn);
                         setCityProvider($dbConn, $ids, $ids);
                     }

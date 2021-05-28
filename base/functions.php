@@ -186,20 +186,21 @@ function getOneProviderDelete(mysqli $dbConn){
         $stmt->execute();
 
         $result = $stmt->get_result(); 
-        
+
+        $rows = $stmt->affected_rows;
+
         while($response = $result->fetch_assoc()){
-            $link = "../operations/delete1-action.php";
+            $link = "delete1-action.php";
             printf('<table><tr><th>Deliver</th><th>Bulstat</th></tr><tr><td>%s</td><td>%s</td></tr><tfoot><tr><td colspan="2"><a href="%s">Delete</td></tr></tfoot></table>', $response['deliver'], $response['bulsat'], $link);
         }; 
 
-        $stmt->close();
-
-        if($response){
+        if($rows > 0){
             return $response;
-            exit;
         } else {
-            echo "No records found";
+            print("No Data found");
+            exit;
         }
+        $stmt->close();
 
     }catch(\mysqli_sql_exception $e){
         $dbConn->close();
@@ -238,13 +239,13 @@ function updateOneProvider(mysqli $dbConn){
             echo '<div class="msg-success"><div class="msg-title">Record is updated successfully.</div>
             <div class="msg-body">Redirecting...</div></div>';
             sleep(5);
-            header("Location: ../operations/update1.php", true, 303);
+            header("Location: update1.php", true, 303);
             exit;
         } else {
             sleep(10);
             die(throw new \mysqli_sql_exception("Error updating data:\n"        . $dbConn->error . "\n" 
                                                                                 . $dbConn->errno . "\n"));
-            header("Location: ../operations/update1.php", true, 303);
+            header("Location: update1.php", true, 303);
 
         }
         
@@ -260,13 +261,13 @@ function deleteOneProvider(mysqli $dbConn){
     try{
         $sql = "DELETE FROM `provider` WHERE `bulsat` = ? AND `deliver` = ?";
         $stmt = $dbConn->prepare($sql);
-        $d = "Orhidea";
+        $d = "Орхидея";
         $b = "005417863";
         $stmt->bind_param('ss', $b, $d);
         $stmt->execute();
         $result = $stmt->affected_rows;
 
-        if($result){
+        if(!$result){
             printf("Deleted provider: %d", $result); 
             sleep(5);
             header("Location: delete1.php", true, 303);

@@ -23,7 +23,8 @@ $table2 = "CREATE TABLE `cities` (
 `city` VARCHAR(30) NOT NULL,
 `cityId` INT(6) UNSIGNED,
 PRIMARY KEY(`id`),
-FOREIGN KEY(cityId) REFERENCES provider(address)
+CONSTRAINT `fk_address_city`
+FOREIGN KEY(`cityId`) REFERENCES `provider`(`address`)
     ON UPDATE CASCADE ON DELETE CASCADE
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
