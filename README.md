@@ -6,9 +6,9 @@ How to run:
 
 You will need apache and mysql services running.  
 Edit database variables inside `config.php` based on your mysql credentials to establish a connection, and make sure to have the database lazur created.  
-Then go to create.php which will create the tables for the database.
+Then go to create.php which will create the tables for the database/or just import lazur-bg.sql into the lazur database
 
-##Project overview:  
+## Project overview:  
 For delivers of a company is needed: 
 
 Company, Deliver, Bulstat, Address (which is only a town), Phone number, Year of registry, Person's name.
@@ -26,8 +26,5 @@ Important files:
 
 Crud files:
 * /operations/delete.php - Delete All Providers
-* /operations/update1.php - Displays provider's phone, deliver, and name only. When the user hits Edit it should update 1 provider name, phone, or bulstat via mysqli query.
-* /operations/delete1.php - Displays provider's bulsat only. Deletes 1 provider via mysqli query. 
-
-Todo:
-* Add Delete method for both multiple records and one record.
+* /operations/update1.php - Displays phone, deliver, and name only for deliver "Лазур". When the user clicks edit the data for deliver "Лазур" gets updated via query.
+* /operations/delete1.php - Displays deliver's bulstat only. When user clicks delete all data for provider "Орхидея" gets deleted via query. 
